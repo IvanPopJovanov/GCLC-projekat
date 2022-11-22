@@ -1,0 +1,84 @@
+
+
+number n_squares 20
+expression s { 100 }
+
+dim s s
+background 1 1 1
+color 0 0 0
+
+point FRAME 0 0 1 1
+getx t FRAME
+
+expression r0 { 240  - t*100}
+expression g0 { 50 + t*120 }
+expression b0 { 60 + t*180 }
+
+expression r1 { 10 + t*200 }
+expression g1 { 90 + t*50 }
+expression b1 { 110 - t* 50 }
+
+array A_X { n_squares }
+array A_Y { n_squares }
+array B_X { n_squares }
+array B_Y { n_squares }
+array C_X { n_squares }
+array C_Y { n_squares }
+array D_X { n_squares }
+array D_Y { n_squares }
+
+expression A_X[0] {0 + t*s}
+expression A_Y[0] {0}
+expression B_X[0] {100}
+expression B_Y[0] {0+t*s}
+expression C_X[0] {100-t*s}
+expression C_Y[0] {100}
+expression D_X[0] {0}
+expression D_Y[0] {100-t*s}
+
+point A A_X[0] A_Y[0]
+point B B_X[0] B_Y[0]
+point C C_X[0] C_Y[0]
+point D D_X[0] D_Y[0]
+
+drawsegment A B
+drawsegment B C
+drawsegment C D
+drawsegment D A
+
+number i 1
+
+while { i < n_squares } 
+{
+    expression ir { i/n_squares }
+
+    expression r { r0 * (1-ir) + r1 * ir }
+    expression g { g0 * (1-ir) + g1 * ir }
+    expression b { b0 * (1-ir) + b1 * ir }
+    color r g b
+
+    expression A_X[i] {A_X[i-1] * (1-t) + B_X[i-1]*(t)}
+    expression A_Y[i] {A_Y[i-1] * (1-t) + B_Y[i-1]*(t)}
+    expression B_X[i] {B_X[i-1] * (1-t) + C_X[i-1]*(t)}
+    expression B_Y[i] {B_Y[i-1] * (1-t) + C_Y[i-1]*(t)}
+    expression C_X[i] {C_X[i-1] * (1-t) + D_X[i-1]*(t)}
+    expression C_Y[i] {C_Y[i-1] * (1-t) + D_Y[i-1]*(t)}
+    expression D_X[i] {D_X[i-1] * (1-t) + A_X[i-1]*(t)}
+    expression D_Y[i] {D_Y[i-1] * (1-t) + A_Y[i-1]*(t)}
+
+    point A A_X[i] A_Y[i]
+    point B B_X[i] B_Y[i]
+    point C C_X[i] C_Y[i]
+    point D D_X[i] D_Y[i]
+
+    drawsegment A B
+    drawsegment B C
+    drawsegment C D
+    drawsegment D A
+
+    expression i { i + 1 }
+}
+
+
+animation_frames 150 30
+
