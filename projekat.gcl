@@ -6,6 +6,8 @@ expression s { 100 }
 dim s s
 background 1 1 1
 color 0 0 0
+expression thickness { s * 0.16/50 }
+linethickness thickness
 
 point FRAME 0 0 1 1
 getx t FRAME
