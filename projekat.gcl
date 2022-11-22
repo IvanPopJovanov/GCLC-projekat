@@ -29,12 +29,12 @@ array D_Y { n_squares }
 
 expression A_X[0] {0 + t*s}
 expression A_Y[0] {0}
-expression B_X[0] {100}
+expression B_X[0] {s}
 expression B_Y[0] {0+t*s}
-expression C_X[0] {100-t*s}
-expression C_Y[0] {100}
+expression C_X[0] {s-t*s}
+expression C_Y[0] {s}
 expression D_X[0] {0}
-expression D_Y[0] {100-t*s}
+expression D_Y[0] {s-t*s}
 
 point A A_X[0] A_Y[0]
 point B B_X[0] B_Y[0]
