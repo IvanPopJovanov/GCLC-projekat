@@ -1,17 +1,25 @@
 
-
+% broj kvadrata
 number n_squares 20
+
+% dimenzija platna za crtanje
 expression s { 100 }
 
 dim s s
 background 1 1 1
+
+% boja spoljašnjeg kvadrata
+% pravi lep efekat ako je crn kao i pozadina
 color 0 0 0
+
+% neka se debljina linije skalira sa veličinom animacije, tako izgleda lepo za svako s
 expression thickness { s * 0.16/50 }
 linethickness thickness
 
 point FRAME 0 0 1 1
 getx t FRAME
 
+% formule za menjanje boja tokom vremena
 expression r0 { 240  - t*100}
 expression g0 { 50 + t*120 }
 expression b0 { 60 + t*180 }
@@ -82,5 +90,4 @@ while { i < n_squares }
 }
 
 
-animation_frames 150 30
-
+animation_frames 300 30
