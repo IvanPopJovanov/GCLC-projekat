@@ -1,4 +1,8 @@
 
+% n kvadrata se nalaze jedan u drugom. 
+% Temena svakog kvadrata se tokom vremena kreću po ivicama prethodnog kvadrata. 
+% Ovo rezultuje u jako zanimljivom vizuelnom efektu. 
+
 % broj kvadrata
 number n_squares 20
 
